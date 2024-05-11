@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Tabling" parent="">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Heading.head01" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Heading.head02" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">26sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Heading.head03_4" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:fontFamily">@font/notosans_medium</item>
+    </style>
+
+    <style name="TextAppearance.Heading.head03_0" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Heading.head04" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle.subtitle01" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle.subtitle02_bold" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle.subtitle02" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Body.body01_bold" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Body.body01" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Caption.caption01" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Caption.caption02" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Caption.caption03" parent = "TextAppearance.Tabling">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+</resources>
