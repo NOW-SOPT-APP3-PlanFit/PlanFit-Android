@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!--main-->
+    <color name="main_green01">#00F1C5</color>
+
+    <!--sub-->
+    <color name="sub_orange01">#FF8C4C</color>
+    <color name="sub_orange02">#E76F00</color>
+    <color name="sub_green01">#1FC1A6</color>
+    <color name="sub_green02">#224E49</color>
+
+    <!--gray-->
+    <color name="gray01">#FFFFFF</color>
+    <color name="gray02">#D9D9D9</color>
+    <color name="gray03">#9BA0A9</color>
+    <color name="gray04">#7D828D</color>
+    <color name="gray05">#4C515C</color>
+    <color name="gray06">#2B2C31</color>
+    <color name="gray07">#000404</color>
+    <color name="gray08">#1F2024</color>
+    <color name="gray09">#131416</color>
+    <color name="gray10">#000404</color>
+
 </resources>
