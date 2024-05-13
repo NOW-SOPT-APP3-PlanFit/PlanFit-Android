@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Typography.PlanFit" parent="">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Typography.PlanFit.head01" parent = "">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Typography.PlanFit.head02" parent = "">
+        <item name="android:textSize">26sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Typography.PlanFit.head03_4" parent = "">
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:fontFamily">@font/notosans_medium</item>
+    </style>
+
+    <style name="Typography.PlanFit.head03_0" parent = "">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Typography.PlanFit.head04" parent = "">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Typography.PlanFit.subtitle01" parent = "">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Typography.PlanFit.subtitle02_bold" parent = "">
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Typography.PlanFit.subtitle02" parent = "">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="Typography.PlanFit.body01_bold" parent = "">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Typography.PlanFit.body01" parent = "">
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="Typography.PlanFit.caption01" parent = "">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="Typography.PlanFit.caption02" parent = "">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="Typography.PlanFit.caption03" parent = "">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+</resources>
