@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PlanFit</string>
+    <!-- exercise list -->
+    <string name="exercise_list_title">오늘의 추천 운동</string>
+    <string name="exercise_list_minute">58분</string>
+    <string name="exercise_list_count">총 6개</string>
+    <string name="exercise_list_superset">슈퍼세트</string>
+    <string name="exercise_list_plus">운동 추가하기</string>
+    <string name="exercise_list_start">시작하기</string>
 </resources>
