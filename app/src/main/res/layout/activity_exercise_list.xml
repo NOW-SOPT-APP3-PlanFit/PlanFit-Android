@@ -9,6 +9,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:overScrollMode="never"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,11 +116,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/iv_setting_toggle"
+                    android:id="@+id/iv_exercise_list_toggle_ellipse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_margin="2dp"
+                    android:layout_marginStart="2dp"
                     android:background="@drawable/ic_toggle_ellipse"
                     app:layout_constraintBottom_toBottomOf="@id/iv_exercise_list_toggle"
                     app:layout_constraintStart_toStartOf="@id/iv_exercise_list_toggle"
@@ -151,6 +152,7 @@
                 android:id="@+id/fl_exercise_list_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_exercise_list_tooltip">
@@ -164,6 +166,7 @@
                 android:id="@+id/rv_exercise_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -180,7 +183,7 @@
                 app:layout_constraintTop_toBottomOf="@id/rv_exercise_list">
 
                 <include
-                    android:id="@+id/layout_exercise_list_top"
+                    android:id="@+id/layout_exercise_list_bottom"
                     layout="@layout/item_exercise_list_stretch" />
             </FrameLayout>
 
@@ -205,6 +208,24 @@
                 app:layout_constraintBottom_toBottomOf="@id/iv_exercise_list_plus"
                 app:layout_constraintStart_toEndOf="@id/iv_exercise_list_plus"
                 app:layout_constraintTop_toTopOf="@id/iv_exercise_list_plus" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginBottom="62dp"
+                android:layout_marginTop="62dp"
+                android:background="@drawable/shape_main_fill_15_rect"
+                android:gravity="center"
+                android:paddingVertical="21dp"
+                android:visibility="invisible"
+                android:text="@string/exercise_list_start"
+                android:textAppearance="@style/Typography.PlanFit.subtitle01"
+                android:textColor="@color/gray10"
+                app:layout_constraintTop_toBottomOf="@id/tv_exercise_list_plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
