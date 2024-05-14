@@ -21,9 +21,10 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
+            android:id="@+id/iv_exercise_list_toggle_ellipse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="2dp"
             motion:layout_constraintBottom_toBottomOf="@+id/iv_exercise_list_toggle"
             motion:layout_constraintStart_toStartOf="@+id/iv_exercise_list_toggle"
             motion:layout_constraintTop_toTopOf="@+id/iv_exercise_list_toggle"/>
@@ -44,10 +45,10 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/iv_exercise_list_toggle"
+            android:id="@+id/iv_exercise_list_toggle_ellipse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="2dp"
             motion:layout_constraintBottom_toBottomOf="@+id/iv_exercise_list_toggle"
             motion:layout_constraintEnd_toEndOf="@+id/iv_exercise_list_toggle"
             motion:layout_constraintTop_toTopOf="@+id/iv_exercise_list_toggle" />
