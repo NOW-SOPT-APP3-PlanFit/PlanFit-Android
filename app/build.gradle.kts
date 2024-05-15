@@ -74,9 +74,13 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose)
     implementation(libs.bundles.compose.debug)
+    implementation(libs.androidx.activity)
 
     //test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
 }
