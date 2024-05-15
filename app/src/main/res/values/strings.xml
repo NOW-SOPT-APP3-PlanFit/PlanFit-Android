@@ -1,14 +1,5 @@
 <resources>
     <string name="app_name">PlanFit</string>
-    <!-- main view -->
-    <string name="health">헬스</string>
-    <string name="week_exercise_goal">이번 주 운동 목표는</string>
-    <string name="weight_loss_plan">체지방 감소 추천 플랜 (초급)</string>
-    <string name="exercise">운동</string>
-    <string name="analysis">분석</string>
-    <string name="community">커뮤니티</string>
-    <string name="profile">프로필</string>
-
     <!-- exercise list -->
     <string name="exercise_list_title">오늘의 추천 운동</string>
     <string name="exercise_list_minute">58분</string>
@@ -16,5 +7,4 @@
     <string name="exercise_list_superset">슈퍼세트</string>
     <string name="exercise_list_plus">운동 추가하기</string>
     <string name="exercise_list_start">시작하기</string>
-
 </resources>
