@@ -7,4 +7,12 @@
     <string name="exercise_list_superset">슈퍼세트</string>
     <string name="exercise_list_plus">운동 추가하기</string>
     <string name="exercise_list_start">시작하기</string>
+
+    <!-- exercise main -->
+    <string name="exercise_main_modify">세트 수정</string>
+    <string name="exercise_main_break">휴식 타이머</string>
+    <string name="exercise_main_add">세트 추가</string>
+    <string name="exercise_main_order">1 / 6</string>
+    <string name="exercise_main_first">랫 풀다운</string>
+    <string name="exercise_main_next">다음 운동</string>
 </resources>
