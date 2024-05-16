@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray08">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:src="@drawable/ic_line_12"
+        app:layout_constraintBottom_toTopOf="@id/cv_exercise_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_weight_loss_plan" />
+
+    <TextView
+        android:id="@+id/tv_health"
+        style="@style/Typography.PlanFit.head02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="275dp"
+        android:text="@string/health"
+        android:textColor="@color/gray01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray07"
+        app:layout_constraintTop_toBottomOf="@id/tv_health" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="275dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_arrow_bottom_16"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintStart_toEndOf="@id/tv_health"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_premium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15.5dp"
+        android:layout_marginEnd="11dp"
+        android:src="@drawable/btn_premium_2x"
+        app:layout_constraintEnd_toStartOf="@+id/btn_setting"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_settings_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_exercise_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="17dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="@color/gray07"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/line">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:id="@+id/tv_week_excercise_goal"
+                style="@style/Typography.PlanFit.subtitle01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19.5dp"
+                android:layout_marginTop="2dp"
+
+                android:text="이번 주 운동 목표는"
+                android:textColor="@color/gray01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_tooltip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/ic_tooltip_24"
+                app:layout_constraintStart_toEndOf="@+id/tv_week_excercise_goal"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_btn_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="23dp"
+                android:src="@drawable/btn_stamp_active"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_week_excercise_goal" />
+
+            <ImageView
+                android:id="@+id/iv_btn_inactive1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/btn_stamp_inactive"
+                app:layout_constraintStart_toEndOf="@id/iv_btn_active"
+                app:layout_constraintTop_toBottomOf="@id/tv_week_excercise_goal" />
+
+            <ImageView
+                android:id="@+id/iv_btn_inactive2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/btn_stamp_inactive"
+                app:layout_constraintStart_toEndOf="@id/iv_btn_inactive1"
+                app:layout_constraintTop_toBottomOf="@id/tv_week_excercise_goal" />
+
+            <TextView
+                android:id="@+id/tv_one_time"
+                style="@style/Typography.PlanFit.subtitle01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 "
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_third_times"
+                app:layout_constraintTop_toTopOf="@+id/tv_third_times" />
+
+            <TextView
+                android:id="@+id/tv_third_times"
+                style="@style/Typography.PlanFit.subtitle01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="/3회"
+                android:textColor="@color/gray04"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/Typography.PlanFit.caption03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:text="2024.04.22. ~ 04.28."
+                android:textColor="@color/gray04"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_weight_loss_plan"
+        style="@style/Typography.PlanFit.subtitle01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="34dp"
+        android:text="@string/week_exercise_goal"
+        android:textColor="@color/gray01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_exercise_plan" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:src="@drawable/ic_arrow_left_16"
+        app:layout_constraintStart_toEndOf="@id/tv_weight_loss_plan"
+        app:layout_constraintTop_toBottomOf="@+id/cv_exercise_plan" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_weight_loss_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="17dp"
+        android:layout_marginTop="72dp"
+        app:cardBackgroundColor="@color/gray07"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/cv_exercise_plan">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="17dp"
+            android:paddingBottom="17dp">
+
+            <TextView
+                android:id="@+id/tv_exercise_twice_a_week"
+                style="@style/Typography.PlanFit.subtitle02_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="주 2회 운동 중"
+                android:textColor="@color/gray02"
+                app:layout_constraintBottom_toBottomOf="@id/btn_number"
+                app:layout_constraintEnd_toStartOf="@+id/btn_number"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_number" />
+
+            <android.widget.Button
+                android:id="@+id/btn_number"
+                style="@style/Typography.PlanFit.subtitle02_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/main_button_custom"
+                android:drawableRight="@drawable/ic_triangle_16"
+                android:drawablePadding="2dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingVertical="3dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="3dp"
+                android:text="2회차"
+                android:textColor="@color/main_green01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_routine"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_exercise_twice_a_week"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_routine"
+                style="@style/Typography.PlanFit.subtitle02_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="96dp"
+                android:text="루틴,"
+                android:textColor="@color/gray02"
+                app:layout_constraintBottom_toBottomOf="@id/btn_number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_number"
+                app:layout_constraintTop_toTopOf="@id/btn_number"
+                app:layout_goneMarginEnd="96dp" />
+
+            <android.widget.Button
+                android:id="@+id/btn_minute"
+                style="@style/Typography.PlanFit.subtitle02_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/main_button_custom"
+                android:drawableRight="@drawable/ic_triangle_16"
+                android:drawablePadding="2dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingVertical="2dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="3dp"
+                android:text="58분"
+
+                android:textColor="@color/main_green01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_minute"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_exercise_twice_a_week" />
+
+            <TextView
+                android:id="@+id/tv_minute"
+                style="@style/Typography.PlanFit.subtitle02_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:text="만큼 운동,"
+                android:textColor="@color/gray01"
+                app:layout_constraintBottom_toBottomOf="@id/btn_minute"
+                app:layout_constraintEnd_toStartOf="@+id/btn_condition"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_minute"
+                app:layout_constraintTop_toBottomOf="@+id/tv_exercise_twice_a_week"
+                app:layout_constraintTop_toTopOf="@id/btn_minute" />
+
+            <android.widget.Button
+                android:id="@+id/btn_condition"
+                style="@style/Typography.PlanFit.subtitle02_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/main_button_custom"
+                android:drawableRight="@drawable/ic_triangle_16"
+                android:drawablePadding="2dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingVertical="2dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="3dp"
+                android:text="최상"
+                android:textColor="@color/main_green01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_condition"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_minute"
+                app:layout_constraintTop_toBottomOf="@id/tv_exercise_twice_a_week" />
+
+            <TextView
+                android:id="@+id/tv_condition"
+                style="@style/Typography.PlanFit.subtitle02_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="36dp"
+                android:text="의 컨디션"
+                android:textColor="@color/gray01"
+                app:layout_constraintBottom_toBottomOf="@id/btn_condition"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_condition"
+                app:layout_constraintTop_toTopOf="@id/btn_condition" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_exercise_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="17dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/gray07"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/cv_weight_loss_plan">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="21dp"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/tv_exercise_body_part"
+                style="@style/Typography.PlanFit.body01_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:text="운동 부위"
+                android:textColor="@color/gray02"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_exercise_body_part_explain"
+                style="@style/Typography.PlanFit.body01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="등,가슴,어깨,하체,이두,유산소"
+                android:textColor="@color/gray02"
+                app:layout_constraintStart_toEndOf="@id/tv_exercise_body_part"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_dumbell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="23dp"
+                android:src="@drawable/ic_dumbbell_40"
+                app:layout_constraintEnd_toStartOf="@id/iv_set"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_exercise_body_part_explain" />
+
+            <TextView
+                android:id="@+id/tv_dumbell_explain"
+                style="@style/Typography.PlanFit.body01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="31.5dp"
+                android:layout_marginTop="10dp"
+                android:text="6개의 운동"
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_set_explain"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_dumbell" />
+
+            <ImageView
+                android:id="@+id/iv_set"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="23dp"
+                android:src="@drawable/ic_set_40"
+                app:layout_constraintEnd_toStartOf="@id/iv_fire"
+                app:layout_constraintStart_toEndOf="@id/iv_dumbell"
+                app:layout_constraintTop_toBottomOf="@+id/tv_exercise_body_part_explain"
+                tools:layout_editor_absoluteX="118dp" />
+
+            <TextView
+                android:id="@+id/tv_set_explain"
+                style="@style/Typography.PlanFit.body01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="51.5dp"
+                android:layout_marginTop="10dp"
+                android:text="21세트"
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_fire_explain"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_dumbell_explain"
+                app:layout_constraintTop_toBottomOf="@id/iv_set" />
+
+            <ImageView
+                android:id="@+id/iv_fire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="43dp"
+                android:src="@drawable/ic_fire_40"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_set"
+                app:layout_constraintTop_toBottomOf="@+id/tv_exercise_body_part_explain" />
+
+            <TextView
+                android:id="@+id/tv_fire_explain"
+                style="@style/Typography.PlanFit.body01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="51.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="39.5dp"
+                android:text="641kcal"
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_set_explain"
+                app:layout_constraintTop_toBottomOf="@id/iv_fire" />
+
+            <android.widget.Button
+                style="@style/Typography.PlanFit.subtitle01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/main_start_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingVertical="13dp"
+                android:text="추천 운동 시작하기"
+                android:textColor="@color/gray10"
+                app:layout_constraintTop_toBottomOf="@id/tv_set_explain" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="39dp"
+        android:elevation="2dp"
+        android:src="@drawable/btn_ai_72"
+        app:layout_constraintBottom_toTopOf="@id/cv_bottom_navi"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_bottom_navi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="17dp"
+        android:layout_marginTop="25dp"
+        app:cardBackgroundColor="@color/gray06"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/cv_exercise_start">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp">
+
+            <ImageView
+                android:id="@+id/iv_bottom_navi_dumbell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="37dp"
+                android:src="@drawable/ic_exercise_active_24"
+                app:layout_constraintEnd_toStartOf="@+id/iv_bottom_navi_analysis"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_bottom_navi_dumbell"
+                style="@style/Typography.PlanFit.caption03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39.5dp"
+                android:text="@string/exercise"
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_bottom_navi_analysis"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_bottom_navi_dumbell" />
+
+            <ImageView
+                android:id="@+id/iv_bottom_navi_analysis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:src="@drawable/ic_analysis_24"
+                app:layout_constraintEnd_toStartOf="@+id/iv_bottom_navi_community"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_bottom_navi_dumbell"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_bottom_navi_analysis"
+                style="@style/Typography.PlanFit.caption03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/analysis"
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_bottom_navi_community"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_bottom_navi_dumbell"
+                app:layout_constraintTop_toBottomOf="@id/iv_bottom_navi_analysis" />
+
+            <ImageView
+                android:id="@+id/iv_bottom_navi_community"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:src="@drawable/ic_community_24"
+                app:layout_constraintEnd_toStartOf="@+id/iv_bottom_navi_profile"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_bottom_navi_analysis"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_bottom_navi_community"
+                style="@style/Typography.PlanFit.caption03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="43dp"
+                android:text="@string/community"
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toStartOf="@+id/tv_bottom_navi_profile"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_bottom_navi_analysis"
+                app:layout_constraintTop_toBottomOf="@id/iv_bottom_navi_community" />
+
+            <ImageView
+                android:id="@+id/iv_bottom_navi_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="47dp"
+                android:layout_marginEnd="35.5dp"
+                android:src="@drawable/ic_community_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_bottom_navi_community"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_bottom_navi_profile"
+                style="@style/Typography.PlanFit.caption03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="35.5dp"
+                android:text="@string/profile"
+                android:textColor="@color/gray01"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_bottom_navi_community"
+                app:layout_constraintTop_toBottomOf="@id/iv_bottom_navi_community" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
