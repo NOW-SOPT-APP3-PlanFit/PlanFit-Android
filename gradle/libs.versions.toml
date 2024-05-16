@@ -78,6 +78,7 @@ retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "re
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
 [plugins]
