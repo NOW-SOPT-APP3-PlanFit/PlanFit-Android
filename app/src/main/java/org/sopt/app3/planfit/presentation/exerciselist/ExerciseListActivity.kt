@@ -18,14 +18,13 @@ class ExerciseListActivity : BaseActivity<ActivityExerciseListBinding>({ Activit
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        adapter = ExerciseListAdapter {
-            Log.e("e","클릭")
+        initRecyclerViewAdapter()
+
+        viewModel.getExercises()
+
+        viewModel.exercises.observe(this){
+            adapter.submitList(it)
         }
-        adapter.submitList(viewModel.mock)
-        binding.rvExerciseList.adapter = adapter
-        val callback = ItemMoveCallback(adapter)
-        val touchHelper = ItemTouchHelper(callback)
-        touchHelper.attachToRecyclerView(binding.rvExerciseList)
 
         binding.layoutExerciseListTop.ivExerciseListArrowDown.setOnClickListener {
             if(binding.layoutExerciseListTop.tvExerciseListDetail.isGone){
@@ -44,5 +43,18 @@ class ExerciseListActivity : BaseActivity<ActivityExerciseListBinding>({ Activit
                 binding.layoutExerciseListBottom.tvExerciseListDetail.isGone = true
             }
         }
+    }
+
+    private fun initRecyclerViewAdapter() {
+        adapter = ExerciseListAdapter {
+            Log.e("e", "클릭")
+        }
+        binding.rvExerciseList.adapter = adapter
+        val callback =
+            ItemMoveCallback(adapter, binding.vExerciseListOverlay, binding.rvExerciseList){
+                viewModel.changeExercisesIndex(it)
+            }
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(binding.rvExerciseList)
     }
 }
