@@ -8,7 +8,7 @@ fun View.snackBar(message: () -> String) {
     Snackbar.make(this, message(), Snackbar.LENGTH_SHORT).show()
 }
 
-class ItemDiffCallback<T : Any>(
+open class ItemDiffCallback<T : Any>(
     val onItemsTheSame: (T, T) -> Boolean,
     val onContentsTheSame: (T, T) -> Boolean
 ) : DiffUtil.ItemCallback<T>() {
