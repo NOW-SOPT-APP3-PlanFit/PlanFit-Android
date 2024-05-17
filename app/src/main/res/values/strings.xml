@@ -20,5 +20,5 @@
     <string name="exercise_main_count_num">15</string>
     <string name="exercise_main_count">회</string>
     <string name="exercise_main_set">세트</string>
-    <string name="exercise_main_complete">세트 완료</string>
+    <string name="exercise_main_complete">"세트 완료"</string>
 </resources>

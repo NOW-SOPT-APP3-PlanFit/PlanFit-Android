@@ -46,7 +46,7 @@
             android:textAppearance="@style/Typography.PlanFit.subtitle01"
             android:textColor="@color/sub_green01"
             app:layout_constraintBottom_toBottomOf="@+id/tv_exercise_main_set_num"
-            app:layout_constraintStart_toEndOf="@id/tv_exercise_main_set_num"
+            app:layout_constraintStart_toEndOf="@id/tv_exercise_main_set"
             app:layout_constraintTop_toTopOf="@id/tv_exercise_main_set_num" />
 
         <TextView
