@@ -2,6 +2,7 @@ package org.sopt.app3.planfit.presentation.exercisemain
 
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.activity.viewModels
 import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
 import coil.load
@@ -14,16 +15,10 @@ import org.sopt.app3.planfit.presentation.exercisemain.adapter.SetListAdapter
 class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflater ->
     ActivityExerciseMainBinding.inflate(inflater)
 }) {
+    private val viewModel by viewModels<SetViewModel>()
 
     private var currentIndex = 0
     private var setCnt = 1
-
-    private var mockSetList: MutableList<SetCount> = mutableListOf(
-        SetCount.InProgress(0, 1),
-        SetCount.Remaining(1, 2),
-        SetCount.Remaining(2, 3),
-        SetCount.Remaining(3, 4),
-    )
 
     private lateinit var adapter: SetListAdapter
 
@@ -36,7 +31,7 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
         adapter = SetListAdapter()
 
         binding.rvExerciseMainSet.adapter = adapter
-        adapter.submitList(mockSetList)
+        adapter.submitList(viewModel.mockSetList)
 
         binding.tvExerciseMainComplete.text = getString(R.string.exercise_main_complete)
 
@@ -46,10 +41,10 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
 
     private fun completeSet() {
         binding.tvExerciseMainComplete.setOnClickListener {
-            mockSetList[currentIndex] = SetCount.Completed(currentIndex, setCnt)
-            mockSetList[++currentIndex] = SetCount.InProgress(currentIndex, ++setCnt)
+            viewModel.mockSetList[currentIndex] = SetCount.Completed(currentIndex, setCnt)
+            viewModel.mockSetList[++currentIndex] = SetCount.InProgress(currentIndex, ++setCnt)
 
-            adapter.submitList(mockSetList)
+            adapter.submitList(viewModel.mockSetList)
             adapter.notifyItemChanged(currentIndex - 1)
             adapter.notifyItemChanged(currentIndex)
 
@@ -59,9 +54,9 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
 
     private fun addSet() {
         binding.tvExerciseMainAdd.setOnClickListener{
-            mockSetList.add(SetCount.Remaining(mockSetList.size - 1, mockSetList.size + 1))
+            viewModel.mockSetList.add(SetCount.Remaining(viewModel.mockSetList.size - 1, viewModel.mockSetList.size + 1))
 
-            adapter.submitList(mockSetList)
+            adapter.submitList(viewModel.mockSetList)
             adapter.notifyItemChanged(currentIndex)
         }
     }
