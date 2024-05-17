@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="15dp"
+    android:layout_marginBottom="8dp"
     android:background="@drawable/shape_sub_fill_10">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,9 +21,21 @@
             android:textAppearance="@style/Typography.PlanFit.body01_bold"
             android:textColor="@color/sub_green01"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_exercise_main_set"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="1세트" />
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/tv_exercise_main_set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exercise_main_set"
+            android:textAppearance="@style/Typography.PlanFit.body01_bold"
+            android:textColor="@color/sub_green01"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_exercise_main_set_num"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_exercise_main_kg_num"
