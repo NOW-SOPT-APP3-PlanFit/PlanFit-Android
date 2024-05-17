@@ -15,12 +15,14 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
     ActivityExerciseMainBinding.inflate(inflater)
 }) {
 
-    private var currentIndex = 1
+    private var currentIndex = 0
+    private var setCnt = 1
+
     private var mockSetList: MutableList<SetCount> = mutableListOf(
-        SetCount.InProgress(1),
-        SetCount.Remaining(2),
-        SetCount.Remaining(3),
-        SetCount.Remaining(4),
+        SetCount.InProgress(0, 1),
+        SetCount.Remaining(1, 2),
+        SetCount.Remaining(2, 3),
+        SetCount.Remaining(3, 4),
     )
 
     private lateinit var adapter: SetListAdapter
@@ -36,18 +38,31 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
         binding.rvExerciseMainSet.adapter = adapter
         adapter.submitList(mockSetList)
 
+        binding.tvExerciseMainComplete.text = getString(R.string.exercise_main_complete)
+
         completeSet()
+        addSet()
     }
 
     private fun completeSet() {
         binding.tvExerciseMainComplete.setOnClickListener {
-            mockSetList[currentIndex] = SetCount.Completed(currentIndex)
-            mockSetList[++currentIndex] = SetCount.InProgress(currentIndex)
+            mockSetList[currentIndex] = SetCount.Completed(currentIndex, setCnt)
+            mockSetList[++currentIndex] = SetCount.InProgress(currentIndex, ++setCnt)
+
             adapter.submitList(mockSetList)
             adapter.notifyItemChanged(currentIndex - 1)
             adapter.notifyItemChanged(currentIndex)
 
-            binding.tvExerciseMainComplete.text = getString(currentIndex, R.string.exercise_main_complete)
+            binding.tvExerciseMainComplete.text = "${currentIndex + 1} 세트 완료"
+        }
+    }
+
+    private fun addSet() {
+        binding.tvExerciseMainAdd.setOnClickListener{
+            mockSetList.add(SetCount.Remaining(mockSetList.size - 1, mockSetList.size + 1))
+
+            adapter.submitList(mockSetList)
+            adapter.notifyItemChanged(currentIndex)
         }
     }
 

@@ -10,19 +10,19 @@ import org.sopt.app3.planfit.domain.model.SetCount
 sealed class SetViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     class SetCompletedViewHolder(private val binding: ItemExerciseMainSetCompletedBinding) : SetViewHolder(binding.root) {
         fun onBind(setData: SetCount.Completed) {
-            binding.tvExerciseMainSetNum.text = setData.id.toString()
+            binding.tvExerciseMainSetNum.text = setData.setCnt.toString()
         }
     }
 
     class SetInProgressViewHolder(private val binding: ItemExerciseMainSetInProgressBinding) : SetViewHolder(binding.root) {
         fun onBind(setData: SetCount.InProgress) {
-            binding.tvExerciseMainSetNum.text = setData.id.toString()
+            binding.tvExerciseMainSetNum.text = setData.setCnt.toString()
         }
     }
 
     class SetRemainingViewHolder(private val binding: ItemExerciseMainSetRemainingBinding) : SetViewHolder(binding.root) {
         fun onBind(setData: SetCount.Remaining) {
-            binding.tvExerciseMainSetNum.text = setData.id.toString()
+            binding.tvExerciseMainSetNum.text = setData.setCnt.toString()
         }
     }
 }
