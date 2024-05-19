@@ -62,7 +62,7 @@ class SetListAdapter : ListAdapter<SetCount, SetViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK = ItemDiffCallback<SetCount>(
-            onItemsTheSame = { old, new -> old.id == new.id },
+            onItemsTheSame = { old, new -> old.setCnt == new.setCnt },
             onContentsTheSame = { old, new -> old == new}
         )
     }

@@ -4,10 +4,13 @@ import androidx.lifecycle.ViewModel
 import org.sopt.app3.planfit.domain.model.SetCount
 
 class SetViewModel:ViewModel() {
-    var mockSetList: MutableList<SetCount> = mutableListOf(
-        SetCount.InProgress(0, 1),
-        SetCount.Remaining(1, 2),
-        SetCount.Remaining(2, 3),
-        SetCount.Remaining(3, 4),
+    var currentIndex = 0
+    var setCnt = 1
+
+    val mockSetList: MutableList<SetCount> = mutableListOf(
+        SetCount.InProgress(1),
+        SetCount.Remaining(2),
+        SetCount.Remaining(3),
+        SetCount.Remaining(4),
     )
 }

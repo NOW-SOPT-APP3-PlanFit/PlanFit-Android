@@ -16,10 +16,6 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
     ActivityExerciseMainBinding.inflate(inflater)
 }) {
     private val viewModel by viewModels<SetViewModel>()
-
-    private var currentIndex = 0
-    private var setCnt = 1
-
     private lateinit var adapter: SetListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,23 +37,23 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
 
     private fun completeSet() {
         binding.tvExerciseMainComplete.setOnClickListener {
-            viewModel.mockSetList[currentIndex] = SetCount.Completed(currentIndex, setCnt)
-            viewModel.mockSetList[++currentIndex] = SetCount.InProgress(currentIndex, ++setCnt)
+            viewModel.mockSetList[viewModel.currentIndex] = SetCount.Completed(viewModel.setCnt)
+            viewModel.mockSetList[++viewModel.currentIndex] = SetCount.InProgress(++viewModel.setCnt)
 
             adapter.submitList(viewModel.mockSetList)
-            adapter.notifyItemChanged(currentIndex - 1)
-            adapter.notifyItemChanged(currentIndex)
+            adapter.notifyItemChanged(viewModel.currentIndex - 1)
+            adapter.notifyItemChanged(viewModel.currentIndex)
 
-            binding.tvExerciseMainComplete.text = "${currentIndex + 1} 세트 완료"
+            binding.tvExerciseMainComplete.text = "${viewModel.currentIndex + 1} 세트 완료"
         }
     }
 
     private fun addSet() {
         binding.tvExerciseMainAdd.setOnClickListener{
-            viewModel.mockSetList.add(SetCount.Remaining(viewModel.mockSetList.size - 1, viewModel.mockSetList.size + 1))
+            viewModel.mockSetList.add(SetCount.Remaining(viewModel.mockSetList.size + 1))
 
             adapter.submitList(viewModel.mockSetList)
-            adapter.notifyItemChanged(currentIndex)
+            adapter.notifyItemChanged(viewModel.currentIndex)
         }
     }
 
@@ -72,9 +68,10 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
     }
 
     private fun changeHeartState() {
-        val ivHeart: ImageView = binding.ivExerciseMainHeart
-        ivHeart.setOnClickListener {
-            ivHeart.isSelected = !ivHeart.isSelected
+        with(binding.ivExerciseMainHeart) {
+            setOnClickListener {
+                isSelected = !isSelected
+            }
         }
     }
 }
