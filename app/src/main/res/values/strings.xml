@@ -24,6 +24,10 @@
     <string name="exercise_main_order">1 / 6</string>
     <string name="exercise_main_first">랫 풀다운</string>
     <string name="exercise_main_next">다음 운동</string>
+    <string name="exercise_main_kg_num">8</string>
+    <string name="exercise_main_kg">kg</string>
+    <string name="exercise_main_count_num">15</string>
+    <string name="exercise_main_count">회</string>
 
 
 </resources>

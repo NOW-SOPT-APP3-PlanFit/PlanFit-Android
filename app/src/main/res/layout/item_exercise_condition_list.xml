@@ -4,10 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="22dp"
-    android:background="@drawable/item_time_list_custom"
-    android:paddingStart="17dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="14dp">
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/item_time_list_custom">
 
     <TextView
         android:id="@+id/exercise_list_condition_title"
@@ -15,6 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
+        android:paddingStart="17dp"
+        android:paddingTop="20dp"
         android:text="125%"
         android:textColor="@color/gray01"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,13 +26,25 @@
         style="@style/Typography.PlanFit.body01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="17dp"
         android:layout_marginTop="21dp"
-        app:layout_constraintTop_toBottomOf="@+id/exercise_list_condition_title"
+        android:paddingStart="17dp"
+        android:paddingBottom="14dp"
         android:text="컨디션이 평소보다 훨씬 좋습니다."
         android:textColor="@color/gray01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_list_condition_title"
 
         />
 
+    <View
+        android:id="@+id/v_exercise_list_edge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_main_line_10_rect"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

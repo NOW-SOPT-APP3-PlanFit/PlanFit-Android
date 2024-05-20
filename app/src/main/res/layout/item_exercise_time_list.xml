@@ -4,10 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="22dp"
-    android:background="@drawable/item_time_list_custom"
-    android:paddingStart="17dp"
-    android:paddingTop="22dp"
-    android:paddingBottom="18dp">
+    android:background="@drawable/item_time_list_custom">
 
     <TextView
         android:id="@+id/exercise_list_time_title"
@@ -17,6 +14,9 @@
         android:layout_marginStart="17dp"
         android:text="짧게"
         android:textColor="@color/gray01"
+        android:paddingStart="17dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,5 +33,15 @@
         app:layout_constraintTop_toTopOf="@id/exercise_list_time_title"
 
         />
+    <View
+        android:id="@+id/v_exercise_list_edge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_main_line_10_rect"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
