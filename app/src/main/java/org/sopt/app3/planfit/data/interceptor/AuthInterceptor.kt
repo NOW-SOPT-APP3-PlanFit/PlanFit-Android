@@ -5,6 +5,6 @@ import okhttp3.Response
 
 class AuthInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        return chain.proceed(chain.request().newBuilder().addHeader("userId","1").build())
+        return chain.proceed(chain.request().newBuilder().addHeader("user_id","1").build())
     }
 }
