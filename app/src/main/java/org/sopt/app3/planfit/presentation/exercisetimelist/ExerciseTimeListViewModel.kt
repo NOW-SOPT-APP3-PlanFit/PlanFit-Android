@@ -1,8 +1,9 @@
 package org.sopt.app3.planfit.presentation.exercisetimelist
 
+import androidx.lifecycle.ViewModel
 import org.sopt.app3.planfit.domain.model.ExerciseTime
 
-class ExerciseTimeListViewModel {
+class ExerciseTimeListViewModel : ViewModel() {
         val mock: List<ExerciseTime> = listOf(
             ExerciseTime("짧게","약 29분"),
             ExerciseTime("짧게2","약 29분"),
