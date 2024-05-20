@@ -35,22 +35,28 @@ class ItemMoveCallback(
         return true
     }
 
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+    }
+
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
 
         val finalList = adapter.getList()
         val fifinalList : MutableList<IndexInfo> = mutableListOf()
         finalList.withIndex().forEach {
-            fifinalList.add(it.value.id, IndexInfo(id = it.value.id, index = it.index))
+            fifinalList.add(IndexInfo(id = it.value.id, index = it.index))
         }
+
         Log.e("리스트", fifinalList.toString())
+
+        onClearView(fifinalList)
+
         viewHolder.itemView.animate().scaleX(1.0f).scaleY(1.0f).setDuration(200).start()
         overlayView.animate().alpha(0.0f).setDuration(200).start()
         recyclerView.children.forEach {
             val overlay = it.findViewById<View>(R.id.iv_exercise_list_item_overlay)
             overlay.animate().alpha(0.0f).setDuration(200).start()
         }
-        onClearView(fifinalList)
     }
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
@@ -65,8 +71,5 @@ class ItemMoveCallback(
                 overlay.animate().alpha(0.2f).setDuration(200).start()
             }
         }
-    }
-
-    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
     }
 }
