@@ -7,7 +7,6 @@ import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
 import coil.load
 import org.sopt.app3.planfit.R
-import org.sopt.app3.planfit.core.ui.activity.ExerciseMainActivity
 import org.sopt.app3.planfit.core.ui.base.BaseActivity
 import org.sopt.app3.planfit.databinding.ActivityStretchingMainBinding
 
@@ -24,8 +23,6 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
         super.onCreate(savedInstanceState)
 
         binding.ivExerciseStretching.setImageResource(R.drawable.gif_exc_cycle)
-
-
         setUpTimer()
 
         binding.btnProgressStop.setOnClickListener {
@@ -51,8 +48,8 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
     private fun startTimer() {
         val remainingTime = totalTime - timeElapsed
         timer = object : CountDownTimer(remainingTime, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                timeElapsed = totalTime - millisUntilFinished
+            override fun onTick(untilFinished: Long) {
+                timeElapsed = totalTime - untilFinished
                 val secondsElapsed = timeElapsed / 1000
                 val minutes = secondsElapsed / 60
                 val seconds = secondsElapsed % 60
@@ -71,57 +68,39 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
         }
         timer?.start()
         isTimerRunning = true
-
-        gifLoad()
-        binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(
-            0,
-            0,
-            0,
-            R.drawable.ic_pause__24
-        )
+        loadGif(true)
     }
 
     private fun stopTimer() {
         timer?.cancel()
         isTimerRunning = false
-
-        binding.ivExerciseStretching.setImageResource(R.drawable.gif_exc_cycle)
-        binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(
-            0,
-            0,
-            0,
-            R.drawable.ic_play__24
-        )
+        loadGif(false)
     }
 
     private fun toggleTimer() {
-
         if (isTimerRunning) {
             stopTimer()
-            binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(
-                0,
-                0,
-                0,
-                R.drawable.ic_play__24
-            )
         } else {
             startTimer()
-            binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(
-                0,
-                0,
-                0,
-                R.drawable.ic_pause__24
-            )
+        }
+        updateButtonImage()
+    }
+
+    private fun loadGif(started: Boolean) {
+        if (started) {
+            val imageLoader = ImageLoader.Builder(this)
+                .components {
+                    add(ImageDecoderDecoder.Factory())
+                }
+                .build()
+            binding.ivExerciseStretching.load(R.raw.gif_exc_cycle, imageLoader = imageLoader)
+        } else {
+            binding.ivExerciseStretching.setImageResource(R.drawable.gif_exc_cycle)
         }
     }
 
-
-    private fun gifLoad() {
-        val imageLoader = ImageLoader.Builder(this)
-            .components {
-                add(ImageDecoderDecoder.Factory())
-            }
-            .build()
-        binding.ivExerciseStretching.load(R.raw.gif_exc_cycle, imageLoader = imageLoader)
+    private fun updateButtonImage() {
+        val drawable = if (isTimerRunning) R.drawable.ic_pause__24 else R.drawable.ic_play__24
+        binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, drawable)
     }
 }
