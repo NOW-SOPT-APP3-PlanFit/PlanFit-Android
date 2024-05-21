@@ -19,7 +19,7 @@
             android:name=".presentation.exercisemain.ExerciseMainActivity"
             android:exported="false"/>
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.StretchingMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +31,9 @@
         <activity
             android:name=".presentation.exerciselist.ExerciseListActivity"
             android:exported="false" />
-        <activity
-            android:name=".presentation.StretchingMainActivity"
-            android:exported="false"/>
+<!--        <activity-->
+<!--            android:name=".presentation.StretchingMainActivity"-->
+<!--            android:exported="false"/>-->
     </application>
 
 </manifest>
