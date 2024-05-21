@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray08">
+
+    <TextView
+        android:id="@+id/stretching"
+        style="@style/Typography.PlanFit.body01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="54dp"
+        android:text="웜업 스트레칭"
+        android:textColor="@color/main_green01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="35dp"
+        android:layout_height="21dp"
+        android:background="@drawable/shape_gray_fill_4_rect"
+        android:gravity="center"
+        android:text="@string/exercise_main_order"
+        android:textAppearance="@style/Typography.PlanFit.caption03"
+        android:textColor="@color/gray02"
+        app:layout_constraintStart_toEndOf="@id/stretching"
+        android:layout_marginStart="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="54dp"
+        />
+
+
+    <TextView
+        android:id="@+id/cycle"
+        style="@style/Typography.PlanFit.head04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
+        android:text="사이클"
+        android:textColor="@color/gray01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stretching" />
+
+    <TextView
+
+        android:id="@+id/next_stretching"
+        style="@style/Typography.PlanFit.caption02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="42dp"
+        android:text="다음 웜업 스트레칭"
+        android:textColor="@color/gray02"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cycle"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/waist_stretching"
+        style="@style/Typography.PlanFit.body01_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginEnd="14dp"
+        android:text="옆구리/허리 스트레칭"
+        android:textColor="@color/gray01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cycle"
+        app:layout_constraintTop_toBottomOf="@id/next_stretching" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/img_exercise_main_btn_fab"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/waist_stretching" />
+
+    <ImageView
+        android:id="@+id/iv_exercise_stretching"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="23dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/waist_stretching" />
+
+    <ImageView
+        android:id="@+id/iv_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/prog_active_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_exercise_stretching" />
+
+    <android.widget.Button
+        android:id="@+id/btn_progress_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/shape_gray_fill_10_rect"
+        android:drawableBottom="@drawable/ic_reverse_24"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_progress_stop"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/btn_progress_stop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_progress_bar" />
+
+    <android.widget.Button
+        android:id="@+id/btn_progress_stop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/shape_gray_fill_10_rect"
+        android:drawableBottom="@drawable/ic_pause__24"
+        android:paddingBottom="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_progress_next"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_progress_back"
+        app:layout_constraintTop_toBottomOf="@id/iv_progress_bar"
+        />
+
+    <android.widget.Button
+        android:id="@+id/btn_progress_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/shape_gray_fill_10_rect"
+        android:drawableBottom="@drawable/ic_playnext_24"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_progress_stop"
+        app:layout_constraintTop_toBottomOf="@id/iv_progress_bar" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
