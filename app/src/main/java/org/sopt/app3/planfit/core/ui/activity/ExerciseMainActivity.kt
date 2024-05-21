@@ -32,7 +32,7 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
 
     private fun changeHeartState() {
         val ivHeart: ImageView = binding.ivExerciseMainHeart
-        ivHeart.setOnClickListener {
+        ivHeart.setOnClickListener{
             ivHeart.isSelected = !ivHeart.isSelected
         }
     }
