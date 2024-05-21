@@ -41,7 +41,10 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
     }
 
     private fun moveToExerciseMainActivity() {
-        val intent = Intent(this, org.sopt.app3.planfit.presentation.exercisemain.ExerciseMainActivity::class.java)
+        val intent = Intent(
+            this,
+            org.sopt.app3.planfit.presentation.exercisemain.ExerciseMainActivity::class.java
+        )
         startActivity(intent)
     }
 
@@ -70,7 +73,12 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
         isTimerRunning = true
 
         gifLoad()
-        binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, R.drawable.ic_pause__24)
+        binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(
+            0,
+            0,
+            0,
+            R.drawable.ic_pause__24
+        )
     }
 
     private fun stopTimer() {
@@ -78,7 +86,12 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
         isTimerRunning = false
 
         binding.ivExerciseStretching.setImageResource(R.drawable.gif_exc_cycle)
-        binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, R.drawable.ic_play__24)
+        binding.btnProgressStop.setCompoundDrawablesWithIntrinsicBounds(
+            0,
+            0,
+            0,
+            R.drawable.ic_play__24
+        )
     }
 
     private fun toggleTimer() {
@@ -97,7 +110,8 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
                 0,
                 0,
                 0,
-                R.drawable.ic_pause__24)
+                R.drawable.ic_pause__24
+            )
         }
     }
 
