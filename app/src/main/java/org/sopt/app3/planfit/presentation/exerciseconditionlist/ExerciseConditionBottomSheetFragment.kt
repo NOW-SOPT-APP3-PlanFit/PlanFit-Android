@@ -60,7 +60,7 @@ class ExerciseConditionBottomSheetFragment : BottomSheetDialogFragment() {
         onDismiss
     }
 
-    fun adjustRecyclerViewHeightToScreen(context: Context, recyclerView: RecyclerView, screenHeightRatio: Float) {
+    private fun adjustRecyclerViewHeightToScreen(context: Context, recyclerView: RecyclerView, screenHeightRatio: Float) {
         val screenHeight = if (VERSION.SDK_INT >= VERSION_CODES.R) {
             val windowMetrics = WindowMetricsCalculator.getOrCreate().computeCurrentWindowMetrics(context as Activity)
             windowMetrics.bounds.height()
