@@ -83,6 +83,7 @@ coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-window = { group = "androidx.window", name = "window", version.ref = "window" }
 
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
