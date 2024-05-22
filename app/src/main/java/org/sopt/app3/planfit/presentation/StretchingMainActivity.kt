@@ -33,7 +33,6 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
             }
             updateButtonImage()
         }
-
         binding.btnProgressNext.setOnClickListener {
             moveToExerciseMainActivity()
         }
