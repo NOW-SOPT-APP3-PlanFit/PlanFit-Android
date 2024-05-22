@@ -18,6 +18,7 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
     private val viewModel: ExerciseMainViewModel by viewModels{ ViewModelFactory() }
     private lateinit var adapter: SetListAdapter
     private var lastIndex = 5
+    private var startIndex = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,24 +31,11 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
         binding.rvExerciseMainSet.adapter = adapter
         adapter.submitList(viewModel.setList.value)
 
+        binding.rvExerciseMainSet.itemAnimator = null // 화면 깜빡임 방지
         binding.tvExerciseMainComplete.text = getString(R.string.exercise_main_complete)
 
-        completeSet()
         addSet()
-    }
-
-    private fun completeSet() {
-        binding.tvExerciseMainComplete.setOnClickListener {
-           //  viewModel.completeSet()
-        }
-
-        viewModel.currentIndex.observe(this){
-            adapter.submitList(viewModel.setList.value)
-            adapter.notifyItemChanged((it - 1).toInt())
-            adapter.notifyItemChanged(it.toInt())
-
-            binding.tvExerciseMainComplete.text = "${it + 1} 세트 완료"
-        }
+        completeSet()
     }
 
     private fun addSet() {
@@ -55,8 +43,21 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
            viewModel.addExerciseSet(lastIndex++.toLong())
         }
         viewModel.setList.observe(this){
-            Log.e("로그",it.toString())
             adapter.submitList(it)
+        }
+    }
+
+    private fun completeSet() {
+        binding.tvExerciseMainComplete.setOnClickListener {
+            viewModel.modifySetStatus(startIndex++.toLong())
+        }
+
+        viewModel.currentIndex.observe(this){
+            adapter.submitList(viewModel.setList.value)
+            adapter.notifyItemChanged((it - 1).toInt())
+            adapter.notifyItemChanged(it.toInt())
+
+            binding.tvExerciseMainComplete.text = "${it} 세트 완료"
         }
     }
 
