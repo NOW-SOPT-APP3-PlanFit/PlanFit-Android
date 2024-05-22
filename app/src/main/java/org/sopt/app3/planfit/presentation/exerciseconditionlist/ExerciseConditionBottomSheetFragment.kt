@@ -1,16 +1,18 @@
 package org.sopt.app3.planfit.presentation.exercisetimelist
 
-import android.app.Dialog
+import android.app.Activity
+import android.content.Context
+import android.os.Build.*
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat
+import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import androidx.recyclerview.widget.RecyclerView
+import androidx.window.layout.WindowMetricsCalculator
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import org.sopt.app3.planfit.R
 import org.sopt.app3.planfit.databinding.FragmentExerciseConditionBottomSheetBinding
 import org.sopt.app3.planfit.domain.model.ExerciseCondition
 import org.sopt.app3.planfit.presentation.exercisetimelist.adapter.ExerciseConditionListAdapter
@@ -32,7 +34,9 @@ class ExerciseConditionBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity?.let {
+            adjustRecyclerViewHeightToScreen(it, binding!!.rvExerciseCondititon, 0.8f)
+        }
         val mockData: List<ExerciseCondition> = listOf(
             ExerciseCondition("Condition 1", "Condition 1"),
             ExerciseCondition("Condition 2", "Condition 1"),
@@ -50,24 +54,28 @@ class ExerciseConditionBottomSheetFragment : BottomSheetDialogFragment() {
 
         conditionListAdapter.submitList(mockData)
     }
-
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        dialog.setOnShowListener {
-            val bottomSheetDialog = it as BottomSheetDialog
-            val bottomSheet =
-                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-            val behavior = BottomSheetBehavior.from(bottomSheet!!)
-            behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        }
-        return dialog
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
         onDismiss
+    }
+
+    fun adjustRecyclerViewHeightToScreen(context: Context, recyclerView: RecyclerView, screenHeightRatio: Float) {
+        val screenHeight = if (VERSION.SDK_INT >= VERSION_CODES.R) {
+            val windowMetrics = WindowMetricsCalculator.getOrCreate().computeCurrentWindowMetrics(context as Activity)
+            windowMetrics.bounds.height()
+        } else {
+            val displayMetrics = DisplayMetrics()
+            @Suppress("DEPRECATION")
+            (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.getMetrics(displayMetrics)
+            displayMetrics.heightPixels
+        }
+
+        val maxRecyclerViewHeight = (screenHeight * screenHeightRatio).toInt()
+
+        recyclerView.layoutParams = recyclerView.layoutParams.apply {
+            height = maxRecyclerViewHeight
+        }
     }
 
 
