@@ -16,8 +16,9 @@ class ExerciseViewHolder(
         }
     }
     fun onBind(data: Exercise){
-        binding.ivExerciseListMuscle.load(R.drawable.img_exc_stretching_3x)
+        binding.ivExerciseListMuscle.load(data.imageUri)
         binding.tvExerciseListTitle.text = data.title
-        binding.tvExerciseListSubtitle.text = data.description
+        val tempText = "${data.set}세트 X ${data.weight}.0kg X ${data.count}회"
+        binding.tvExerciseListSubtitle.text = tempText
     }
 }

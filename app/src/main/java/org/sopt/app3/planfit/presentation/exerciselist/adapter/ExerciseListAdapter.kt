@@ -41,7 +41,7 @@ class ExerciseListAdapter(
 
     companion object {
         private val DiffUtil = ItemDiffCallback<Exercise>(
-            onItemsTheSame = { old, new -> old.title == new.title },
+            onItemsTheSame = { old, new -> old.id == new.id },
             onContentsTheSame = { old, new -> old == new }
         )
     }
