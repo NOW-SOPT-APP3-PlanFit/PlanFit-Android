@@ -125,6 +125,7 @@
                     app:layout_constraintStart_toStartOf="@+id/tv_exercise_main_next"
                     app:layout_constraintTop_toBottomOf="@+id/tv_exercise_main_next" />
 
+
                 <ImageView
                     android:id="@+id/iv_exercise_main_latpulldown"
                     android:layout_width="0dp"

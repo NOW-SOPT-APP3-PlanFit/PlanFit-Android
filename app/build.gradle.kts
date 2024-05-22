@@ -83,6 +83,7 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.compose.debug)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.window)
 
     //test
     testImplementation(libs.junit)

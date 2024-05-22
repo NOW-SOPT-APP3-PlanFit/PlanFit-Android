@@ -36,6 +36,7 @@ okhttp = "4.11.0"
 timber = "5.0.1"
 coil = "2.4.0"
 activity = "1.8.0"
+window = "1.2.0"
 
 [libraries]
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
@@ -80,6 +81,8 @@ okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor",
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-window = { group = "androidx.window", name = "window", version.ref = "window" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
