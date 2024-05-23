@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.StopwatchActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.exercisemain.ExerciseMainActivity"
             android:exported="false" />
         <activity
@@ -27,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".presentation.exerciselist.ExerciseListActivity"
             android:exported="false" />
