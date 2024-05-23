@@ -9,15 +9,17 @@ import kotlinx.coroutines.launch
 import org.sopt.app3.planfit.domain.model.SetCount
 import org.sopt.app3.planfit.domain.repo.ExerciseMainRepository
 
-class ExerciseMainViewModel(private val exerciseMainRepository: ExerciseMainRepository) : ViewModel() {
+class ExerciseMainViewModel(private val exerciseMainRepository: ExerciseMainRepository) :
+    ViewModel() {
     private val _setList = MutableLiveData(
         mutableListOf(
-        SetCount.InProgress(1),
-        SetCount.Remaining(2),
-        SetCount.Remaining(3),
-        SetCount.Remaining(4),
-    ))
-    val setList : LiveData<MutableList<SetCount>> get() = _setList
+            SetCount.InProgress(1),
+            SetCount.Remaining(2),
+            SetCount.Remaining(3),
+            SetCount.Remaining(4),
+        )
+    )
+    val setList: LiveData<MutableList<SetCount>> get() = _setList
 
     private val _currentIndex = MutableLiveData<Long>(1)
     val currentIndex: LiveData<Long> = _currentIndex
@@ -36,18 +38,32 @@ class ExerciseMainViewModel(private val exerciseMainRepository: ExerciseMainRepo
         }
     }
 
-    fun modifySetStatus(id: Long) {
+    fun completeExerciseSet(id: Long) {
         viewModelScope.launch {
             exerciseMainRepository.modifySetStatus(1)
                 .onSuccess {
-                    val setListValue = _setList.value
-                    _currentIndex.value = currentIndex.value?.plus(1)
-                    setListValue?.set((id-1).toInt(), SetCount.Completed(id.toInt())) // 기본 인덱스는 0부터 시작
-                    setListValue?.set(id.toInt(), SetCount.InProgress((id+1).toInt()))
+                    modifySetStatus(id)
                 }
-                .onFailure {
-                    Log.e("modify set fail", it.message.toString())
+                .onFailure { throwable ->
+                    if (throwable is retrofit2.HttpException && throwable.code() == 400) {
+                        exerciseMainRepository.addExerciseSet(1).onSuccess { // 남은 세트가 없을 때 추가
+                            modifySetStatus(id)
+                        }
+                        Log.e("modify set fail", "400 Bad Request: ${throwable.message}")
+                    } else {
+                        Log.e("modify set fail", throwable.message.toString())
+                    }
                 }
         }
+    }
+
+    private fun modifySetStatus(id: Long) {
+        val setListValue = _setList.value
+        _currentIndex.value = currentIndex.value?.plus(1)
+        setListValue?.set(
+            (id - 1).toInt(),
+            SetCount.Completed(id.toInt())
+        ) // 기본 인덱스는 0부터 시작
+        setListValue?.set(id.toInt(), SetCount.InProgress((id + 1).toInt()))
     }
 }

@@ -1,7 +1,6 @@
 package org.sopt.app3.planfit.presentation.exercisemain
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
@@ -15,7 +14,7 @@ import org.sopt.app3.planfit.presentation.exercisemain.adapter.SetListAdapter
 class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflater ->
     ActivityExerciseMainBinding.inflate(inflater)
 }) {
-    private val viewModel: ExerciseMainViewModel by viewModels{ ViewModelFactory() }
+    private val viewModel: ExerciseMainViewModel by viewModels { ViewModelFactory() }
     private lateinit var adapter: SetListAdapter
     private var lastIndex = 5
     private var startIndex = 1
@@ -39,20 +38,20 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
     }
 
     private fun addSet() {
-        binding.tvExerciseMainAdd.setOnClickListener{
-           viewModel.addExerciseSet(lastIndex++.toLong())
+        binding.tvExerciseMainAdd.setOnClickListener {
+            viewModel.addExerciseSet(lastIndex++.toLong())
         }
-        viewModel.setList.observe(this){
+        viewModel.setList.observe(this) {
             adapter.submitList(it)
         }
     }
 
     private fun completeSet() {
         binding.tvExerciseMainComplete.setOnClickListener {
-            viewModel.modifySetStatus(startIndex++.toLong())
+            viewModel.completeExerciseSet(startIndex++.toLong())
         }
 
-        viewModel.currentIndex.observe(this){
+        viewModel.currentIndex.observe(this) {
             adapter.submitList(viewModel.setList.value)
             adapter.notifyItemChanged((it - 1).toInt())
             adapter.notifyItemChanged(it.toInt())
