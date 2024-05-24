@@ -1,9 +1,8 @@
 package org.sopt.app3.planfit.data.repo
 
-import android.provider.ContactsContract.Data
 import org.sopt.app3.planfit.data.api.MainService
 import org.sopt.app3.planfit.data.model.request.RequestPutMainDto
-import org.sopt.app3.planfit.data.model.response.ResponseGetMainDto
+import org.sopt.app3.planfit.data.model.response.toDomain
 import org.sopt.app3.planfit.domain.model.MainGet
 import org.sopt.app3.planfit.domain.model.MainPut
 import org.sopt.app3.planfit.domain.repo.MainRepository
@@ -12,15 +11,9 @@ class MainRepositoryImpl(
     private val mainService: MainService,
 ) : MainRepository {
 
-    override suspend fun getMain(): Result<List<MainGet>> =
+    override suspend fun getMain(): Result<MainGet> =
         runCatching {
-            mainService.getMain().data!!.data.map {
-                MainGet(
-                    round = it.round,
-                    minute = it.minute,
-                    condition = it.condition
-                )
-            }
+            mainService.getMain().data!!.toDomain()
         }
 
     override suspend fun putMain(mainPut: MainPut): Result<Unit> =
@@ -29,6 +22,6 @@ class MainRepositoryImpl(
                 minute = mainPut.minute,
                 condition = mainPut.condition
             )
-            mainService.putMain(requestDto).data!!
+            mainService.putMain(requestDto)
         }
 }
