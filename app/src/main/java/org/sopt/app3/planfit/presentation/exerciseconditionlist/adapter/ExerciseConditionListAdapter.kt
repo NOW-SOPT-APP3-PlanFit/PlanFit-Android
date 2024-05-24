@@ -15,7 +15,6 @@ class ExerciseConditionListAdapter(
     private val selectedCondition: String,
     private val onClick: (String) -> Unit,
 ) : ListAdapter<ExerciseCondition, ExerciseConditionListViewHolder>(DiffUtil) {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseConditionListViewHolder {
         return ExerciseConditionListViewHolder(
             binding = ItemExerciseConditionListBinding.inflate(
@@ -37,8 +36,6 @@ class ExerciseConditionListAdapter(
     }
 
     companion object {
-
-
         private val DiffUtil = ItemDiffCallback<ExerciseCondition>(
             onItemsTheSame = { old, new -> old.title == new.title },
             onContentsTheSame = { old, new -> old == new }

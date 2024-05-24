@@ -9,12 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.window.layout.WindowMetricsCalculator
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.sopt.app3.planfit.databinding.FragmentExerciseConditionBottomSheetBinding
-import org.sopt.app3.planfit.domain.model.ExerciseCondition
+import org.sopt.app3.planfit.presentation.exerciseconditionlist.ExerciseConditionListViewModel
 import org.sopt.app3.planfit.presentation.exercisetimelist.adapter.ExerciseConditionListAdapter
 
 
@@ -23,6 +24,7 @@ class ExerciseConditionBottomSheetFragment : BottomSheetDialogFragment() {
     lateinit var onDismiss: () -> Unit
     lateinit var onSuccess: (String) -> Unit
     var selectedCondition: String? = null
+    private val viewModel: ExerciseConditionListViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,22 +39,17 @@ class ExerciseConditionBottomSheetFragment : BottomSheetDialogFragment() {
         activity?.let {
             adjustRecyclerViewHeightToScreen(it, binding!!.rvExerciseCondititon, 0.8f)
         }
-        val mockData: List<ExerciseCondition> = listOf(
-            ExerciseCondition("Condition 1", "Condition 1"),
-            ExerciseCondition("Condition 2", "Condition 1"),
-            ExerciseCondition("Condition 3", "Condition 1"),
-            ExerciseCondition("Condition 4", "Condition 1"),
-            ExerciseCondition("Condition 5", "Condition 1"),
-        )
+
         val conditionListAdapter = ExerciseConditionListAdapter(selectedCondition!!) {
             onSuccess(it)
             dismiss()
         }
         binding?.rvExerciseCondititon?.adapter = conditionListAdapter
         binding?.rvExerciseCondititon?.layoutManager = LinearLayoutManager(requireContext())
+        viewModel.exerciseConditions.observe(viewLifecycleOwner) { conditions ->
+            conditionListAdapter.submitList(conditions)
+        }
 
-
-        conditionListAdapter.submitList(mockData)
     }
     override fun onDestroyView() {
         super.onDestroyView()
@@ -77,7 +74,6 @@ class ExerciseConditionBottomSheetFragment : BottomSheetDialogFragment() {
             height = maxRecyclerViewHeight
         }
     }
-
 
     companion object {
         fun newInstance(
