@@ -6,8 +6,12 @@ import org.sopt.app3.planfit.data.ServicePool
 import org.sopt.app3.planfit.data.repo.ExerciseListRepositoryImpl
 import org.sopt.app3.planfit.data.repo.MainRepositoryImpl
 import org.sopt.app3.planfit.presentation.exerciseconditionlist.ExerciseConditionListViewModel
-import org.sopt.app3.planfit.presentation.exerciselist.ExerciseViewModel
 import org.sopt.app3.planfit.presentation.exercisetimelist.ExerciseTimeListViewModel
+import org.sopt.app3.planfit.data.repo.ExerciseMainRepositoryImpl
+import org.sopt.app3.planfit.data.repo.LikeRepoImpl
+import org.sopt.app3.planfit.presentation.exerciselist.ExerciseViewModel
+import org.sopt.app3.planfit.presentation.exercisemain.LikeViewModel
+import org.sopt.app3.planfit.presentation.exercisemain.ExerciseMainViewModel
 import org.sopt.app3.planfit.presentation.provider.ResourceProviderImpl
 
 class ViewModelFactory : ViewModelProvider.Factory {
@@ -24,7 +28,12 @@ class ViewModelFactory : ViewModelProvider.Factory {
         } else if (modelClass.isAssignableFrom(ExerciseTimeListViewModel::class.java)) {
             return ExerciseTimeListViewModel(MainRepositoryImpl(ServicePool.mainService)) as T
         }
-
+        else if(modelClass.isAssignableFrom(ExerciseMainViewModel::class.java)) {
+            return ExerciseMainViewModel(ExerciseMainRepositoryImpl(ServicePool.exerciseMainService)) as T
+        }
+        else if(modelClass.isAssignableFrom(LikeViewModel::class.java)) {
+            return LikeViewModel(LikeRepoImpl(ServicePool.likeService)) as T
+        }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }
 }

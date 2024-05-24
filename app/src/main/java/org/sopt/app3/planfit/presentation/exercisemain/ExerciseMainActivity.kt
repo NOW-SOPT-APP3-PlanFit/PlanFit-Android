@@ -1,22 +1,27 @@
 package org.sopt.app3.planfit.presentation.exercisemain
 
 import android.os.Bundle
-import android.widget.ImageView
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.viewmodel.viewModelFactory
 import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
 import coil.load
 import org.sopt.app3.planfit.R
+import org.sopt.app3.planfit.core.common.ViewModelFactory
 import org.sopt.app3.planfit.core.ui.base.BaseActivity
 import org.sopt.app3.planfit.databinding.ActivityExerciseMainBinding
-import org.sopt.app3.planfit.domain.model.SetCount
 import org.sopt.app3.planfit.presentation.exercisemain.adapter.SetListAdapter
 
 class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflater ->
     ActivityExerciseMainBinding.inflate(inflater)
 }) {
-    private val viewModel by viewModels<SetViewModel>()
+    private val mainViewModel: ExerciseMainViewModel by viewModels { ViewModelFactory() }
+    private val likeViewModel: LikeViewModel by viewModels { ViewModelFactory() }
+
     private lateinit var adapter: SetListAdapter
+    private var lastIndex = 5
+    private var startIndex = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,33 +32,42 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
         adapter = SetListAdapter()
 
         binding.rvExerciseMainSet.adapter = adapter
-        adapter.submitList(viewModel.mockSetList)
+        adapter.submitList(mainViewModel.setList.value)
 
+        binding.rvExerciseMainSet.itemAnimator = null // 화면 깜빡임 방지
         binding.tvExerciseMainComplete.text = getString(R.string.exercise_main_complete)
 
-        completeSet()
         addSet()
+        completeSet()
+    }
+
+    private fun addSet() {
+        binding.tvExerciseMainAdd.setOnClickListener {
+            mainViewModel.addExerciseSet(lastIndex++.toLong())
+        }
+        mainViewModel.setList.observe(this) {
+            adapter.submitList(it)
+        }
     }
 
     private fun completeSet() {
         binding.tvExerciseMainComplete.setOnClickListener {
-            viewModel.mockSetList[viewModel.currentIndex] = SetCount.Completed(viewModel.setCnt)
-            viewModel.mockSetList[++viewModel.currentIndex] = SetCount.InProgress(++viewModel.setCnt)
+            mainViewModel.completeExerciseSet(startIndex++.toLong())
 
-            adapter.submitList(viewModel.mockSetList)
-            adapter.notifyItemChanged(viewModel.currentIndex - 1)
-            adapter.notifyItemChanged(viewModel.currentIndex)
-
-            binding.tvExerciseMainComplete.text = "${viewModel.currentIndex + 1} 세트 완료"
+            if(startIndex == lastIndex-1)
+                binding.tvExerciseMainComplete.isEnabled = false
         }
-    }
 
-    private fun addSet() {
-        binding.tvExerciseMainAdd.setOnClickListener{
-            viewModel.mockSetList.add(SetCount.Remaining(viewModel.mockSetList.size + 1))
+        mainViewModel.setList.observe(this) {
+            binding.tvExerciseMainComplete.isEnabled = true
+        }
 
-            adapter.submitList(viewModel.mockSetList)
-            adapter.notifyItemChanged(viewModel.currentIndex)
+        mainViewModel.currentIndex.observe(this) {
+            adapter.submitList(mainViewModel.setList.value)
+            adapter.notifyItemChanged((it - 1).toInt())
+            adapter.notifyItemChanged(it.toInt())
+
+            binding.tvExerciseMainComplete.text = "${it} 세트 완료"
         }
     }
 
@@ -71,6 +85,11 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
         with(binding.ivExerciseMainHeart) {
             setOnClickListener {
                 isSelected = !isSelected
+
+                if(isSelected)
+                    likeViewModel.changeToLike(1)
+                else
+                    likeViewModel.changeToUnlike(1)
             }
         }
     }
