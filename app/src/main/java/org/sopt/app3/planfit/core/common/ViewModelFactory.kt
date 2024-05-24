@@ -18,24 +18,31 @@ import org.sopt.app3.planfit.presentation.provider.ResourceProviderImpl
 
 class ViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ExerciseViewModel::class.java)) {
-            return ExerciseViewModel(
-                ExerciseListRepositoryImpl(
-                    ServicePool.exerciseListService,
-                    ResourceProviderImpl()
-                )
-            ) as T
-        } else if (modelClass.isAssignableFrom(ExerciseConditionListViewModel::class.java)) {
-            return ExerciseConditionListViewModel(MainRepositoryImpl(ServicePool.mainService)) as T
-        } else if (modelClass.isAssignableFrom(ExerciseMainViewModel::class.java)) {
-            return ExerciseMainViewModel(ExerciseMainRepositoryImpl(ServicePool.exerciseMainService), PlanFitApp.stopWatch) as T
-        } else if (modelClass.isAssignableFrom(LikeViewModel::class.java)) {
-            return LikeViewModel(LikeRepoImpl(ServicePool.likeService)) as T
-        } else if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(MainRepositoryImpl(ServicePool.mainService)) as T
-        } else if (modelClass.isAssignableFrom(StretchingMainViewModel::class.java)) {
-            return StretchingMainViewModel(PlanFitApp.stopWatch) as T
+        return when (modelClass) {
+            ExerciseViewModel::class.java -> {
+                ExerciseViewModel(
+                    ExerciseListRepositoryImpl(
+                        ServicePool.exerciseListService,
+                        ResourceProviderImpl()
+                    )
+                ) as T
+            }
+            ExerciseConditionListViewModel::class.java -> {
+                ExerciseConditionListViewModel(MainRepositoryImpl(ServicePool.mainService)) as T
+            }
+            ExerciseMainViewModel::class.java -> {
+                ExerciseMainViewModel(ExerciseMainRepositoryImpl(ServicePool.exerciseMainService), PlanFitApp.stopWatch) as T
+            }
+            LikeViewModel::class.java -> {
+                LikeViewModel(LikeRepoImpl(ServicePool.likeService)) as T
+            }
+            MainViewModel::class.java -> {
+                MainViewModel(MainRepositoryImpl(ServicePool.mainService)) as T
+            }
+            StretchingMainViewModel::class.java -> {
+                StretchingMainViewModel(PlanFitApp.stopWatch) as T
+            }
+            else -> throw IllegalArgumentException("Unknown ViewModel Class")
         }
-        throw IllegalArgumentException("Unknown ViewModel Class")
     }
 }
