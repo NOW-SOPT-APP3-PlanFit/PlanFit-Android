@@ -36,6 +36,7 @@ object ApiFactory {
 
 object ServicePool {
     val exerciseListService by lazy { ApiFactory.create<ExerciseListService>() }
+    val mainService by lazy { ApiFactory.create<MainService>() }
     val exerciseMainService by lazy { ApiFactory.create<ExerciseMainService>() }
     val likeService by lazy { ApiFactory.create<LikeService>() }
 }

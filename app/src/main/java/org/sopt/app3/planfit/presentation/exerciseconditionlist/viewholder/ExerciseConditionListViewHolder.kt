@@ -12,7 +12,7 @@ class ExerciseConditionListViewHolder (
 ) : RecyclerView.ViewHolder(binding.root){
     init {
         binding.root.setOnClickListener {
-            onClick
+            onClick(selectedCondition)
         }
     }
     fun onBind(data: ExerciseCondition){
