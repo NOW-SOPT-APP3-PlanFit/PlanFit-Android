@@ -5,15 +5,24 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.sopt.app3.planfit.BuildConfig
+import org.sopt.app3.planfit.data.api.ExerciseListService
+import org.sopt.app3.planfit.data.api.ExerciseMainService
+import org.sopt.app3.planfit.data.api.LikeService
+import org.sopt.app3.planfit.data.api.MainService
+import org.sopt.app3.planfit.data.interceptor.AuthInterceptor
 import retrofit2.Retrofit
 
 object ApiFactory {
-    private const val BASE_URL = "BuildConfig.BASE_URL"
+    private const val BASE_URL = BuildConfig.BASE_URL
 
     private val client by lazy {
-        OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }).build()
+        OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
+            .addInterceptor(AuthInterceptor())
+            .build()
     }
 
     val retrofit: Retrofit by lazy {
@@ -24,4 +33,11 @@ object ApiFactory {
 
 
     inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
+}
+
+object ServicePool {
+    val exerciseListService by lazy { ApiFactory.create<ExerciseListService>() }
+    val mainService by lazy { ApiFactory.create<MainService>() }
+    val exerciseMainService by lazy { ApiFactory.create<ExerciseMainService>() }
+    val likeService by lazy { ApiFactory.create<LikeService>() }
 }

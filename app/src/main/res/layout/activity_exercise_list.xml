@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray08">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_exercise_list_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:padding="15dp"
+                android:src="@drawable/ic_arrow_left_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_exercise_list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise_list_title"
+                android:textAppearance="@style/Typography.PlanFit.subtitle01"
+                android:textColor="@color/gray01"
+                app:layout_constraintBottom_toBottomOf="@id/iv_exercise_list_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_exercise_list_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/exercise_list_minute"
+                android:textAppearance="@style/Typography.PlanFit.caption02"
+                android:textColor="@color/gray01"
+                app:layout_constraintBottom_toBottomOf="@id/iv_exercise_list_clock"
+                app:layout_constraintStart_toEndOf="@id/iv_exercise_list_clock"
+                app:layout_constraintTop_toTopOf="@id/iv_exercise_list_clock" />
+
+            <ImageView
+                android:id="@+id/iv_exercise_list_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:padding="15dp"
+                android:src="@drawable/ic_share_24"
+                app:layout_constraintBottom_toBottomOf="@id/iv_exercise_list_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_exercise_list_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="22dp"
+                android:text="@string/exercise_list_count"
+                android:textAppearance="@style/Typography.PlanFit.caption02"
+                android:textColor="@color/gray01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_exercise_list_back" />
+
+            <View
+                android:id="@+id/v_exercise_list_line1"
+                android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="6dp"
+                android:background="@color/gray04"
+                app:layout_constraintBottom_toBottomOf="@id/tv_exercise_list_count"
+                app:layout_constraintStart_toEndOf="@id/tv_exercise_list_count"
+                app:layout_constraintTop_toTopOf="@id/tv_exercise_list_count" />
+
+            <ImageView
+                android:id="@+id/iv_exercise_list_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_clock_16"
+                app:layout_constraintBottom_toBottomOf="@id/v_exercise_list_line1"
+                app:layout_constraintStart_toEndOf="@id/v_exercise_list_line1"
+                app:layout_constraintTop_toTopOf="@id/v_exercise_list_line1" />
+
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/ml_exercise_list_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="17dp"
+                android:background="@android:color/transparent"
+                app:layoutDescription="@xml/toggle_motion_scene"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_exercise_list_share">
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/iv_exercise_list_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_toggle_off"
+                    app:altSrc="@drawable/ic_toggle_on"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_exercise_list_toggle_ellipse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/ic_toggle_ellipse"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_exercise_list_toggle"
+                    app:layout_constraintStart_toStartOf="@id/iv_exercise_list_toggle"
+                    app:layout_constraintTop_toTopOf="@id/iv_exercise_list_toggle" />
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+            <TextView
+                android:id="@+id/tv_exercise_list_superset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/exercise_list_superset"
+                android:textAppearance="@style/Typography.PlanFit.body01"
+                android:textColor="@color/gray02"
+                app:layout_constraintBottom_toBottomOf="@id/ml_exercise_list_toggle"
+                app:layout_constraintEnd_toStartOf="@id/ml_exercise_list_toggle"
+                app:layout_constraintTop_toTopOf="@id/ml_exercise_list_toggle" />
+
+            <ImageView
+                android:id="@+id/iv_exercise_list_tooltip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_tooltip_24"
+                app:layout_constraintBottom_toBottomOf="@id/tv_exercise_list_superset"
+                app:layout_constraintEnd_toStartOf="@id/tv_exercise_list_superset"
+                app:layout_constraintTop_toTopOf="@id/tv_exercise_list_superset" />
+
+            <FrameLayout
+                android:id="@+id/fl_exercise_list_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_exercise_list_tooltip">
+
+                <include
+                    android:id="@+id/layout_exercise_list_top"
+                    layout="@layout/item_exercise_list_stretch" />
+            </FrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_exercise_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:elevation="2dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fl_exercise_list_top"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_exercise_list_muscle" />
+
+            <FrameLayout
+                android:id="@+id/fl_exercise_list_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_exercise_list">
+
+                <include
+                    android:id="@+id/layout_exercise_list_bottom"
+                    layout="@layout/item_exercise_list_stretch" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/iv_exercise_list_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/ic_plus_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fl_exercise_list_bottom" />
+
+            <TextView
+                android:id="@+id/tv_exercise_list_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:text="@string/exercise_list_plus"
+                android:textAppearance="@style/Typography.PlanFit.subtitle02"
+                android:textColor="@color/gray02"
+                app:layout_constraintBottom_toBottomOf="@id/iv_exercise_list_plus"
+                app:layout_constraintStart_toEndOf="@id/iv_exercise_list_plus"
+                app:layout_constraintTop_toTopOf="@id/iv_exercise_list_plus" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginBottom="62dp"
+                android:layout_marginTop="62dp"
+                android:background="@drawable/shape_main_fill_15_rect"
+                android:gravity="center"
+                android:paddingVertical="21dp"
+                android:visibility="invisible"
+                android:text="@string/exercise_list_start"
+                android:textAppearance="@style/Typography.PlanFit.subtitle01"
+                android:textColor="@color/gray10"
+                app:layout_constraintTop_toBottomOf="@id/tv_exercise_list_plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/v_exercise_list_overlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/gray10"
+                android:elevation="1dp"
+                android:alpha="0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <TextView
+        android:id="@+id/tv_exercise_list_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="62dp"
+        android:background="@drawable/shape_main_fill_15_rect"
+        android:gravity="center"
+        android:paddingVertical="21dp"
+        android:text="@string/exercise_list_start"
+        android:textAppearance="@style/Typography.PlanFit.subtitle01"
+        android:textColor="@color/gray10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
