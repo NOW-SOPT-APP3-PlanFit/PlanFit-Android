@@ -22,7 +22,7 @@ class ExerciseTimeBottomSheetFragment : BottomSheetDialogFragment() {
     private var binding: FragmentExerciseTimeBottomSheetBinding? = null
     lateinit var onDismiss: () -> Unit
     lateinit var onSuccess: (Int) -> Unit
-    var selectedTime: Int? = null
+    var selectedTime: String? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,11 +39,11 @@ class ExerciseTimeBottomSheetFragment : BottomSheetDialogFragment() {
         }
         val mockData: List<ExerciseTime> = listOf(
             ExerciseTime("짧게", "약 29분"),
-            ExerciseTime("짧게2", "약 29분"),
-            ExerciseTime("짧게3", "약 29분"),
-            ExerciseTime("짧게4", "약 29분"),
-            ExerciseTime("짧게5", "약 29분"),
-            ExerciseTime("짧게6", "약 29분"),
+            ExerciseTime("조금 짧게", "약 44분"),
+            ExerciseTime("보통", "약 58분"),
+            ExerciseTime("조금 길게", "약 73분"),
+            ExerciseTime("길게", "약 87분"),
+            ExerciseTime("아주 길게", "약 116분"),
         )
 
 
@@ -85,7 +85,7 @@ class ExerciseTimeBottomSheetFragment : BottomSheetDialogFragment() {
         fun newInstance(
             onDismiss: () -> Unit,
             onSuccess: (Int) -> Unit,
-            selectedTime: Int
+            selectedTime: String
         ): ExerciseTimeBottomSheetFragment = ExerciseTimeBottomSheetFragment().apply {
             this.onDismiss = onDismiss
             this.onSuccess = onSuccess
