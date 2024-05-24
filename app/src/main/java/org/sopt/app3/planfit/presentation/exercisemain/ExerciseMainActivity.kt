@@ -53,6 +53,13 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
     private fun completeSet() {
         binding.tvExerciseMainComplete.setOnClickListener {
             mainViewModel.completeExerciseSet(startIndex++.toLong())
+
+            if(startIndex == lastIndex-1)
+                binding.tvExerciseMainComplete.isEnabled = false
+        }
+
+        mainViewModel.setList.observe(this) {
+            binding.tvExerciseMainComplete.isEnabled = true
         }
 
         mainViewModel.currentIndex.observe(this) {
