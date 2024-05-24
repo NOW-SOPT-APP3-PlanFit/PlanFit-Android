@@ -4,12 +4,19 @@ import android.content.Intent
 import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.os.CountDownTimer
+import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
 import coil.load
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.app3.planfit.R
+import org.sopt.app3.planfit.core.common.ViewModelFactory
 import org.sopt.app3.planfit.core.ui.base.BaseActivity
 import org.sopt.app3.planfit.databinding.ActivityStretchingMainBinding
+import org.sopt.app3.planfit.presentation.exercisemain.ExerciseMainActivity
 
 class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inflater ->
     ActivityStretchingMainBinding.inflate(inflater)
@@ -18,6 +25,7 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
     private var isTimerRunning = false
     private val totalTime = 5 * 60 * 1000
     private var timeElapsed = 0L
+    private val viewModel by viewModels<StretchingMainViewModel> { ViewModelFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +44,10 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
         binding.btnProgressNext.setOnClickListener {
             moveToExerciseMainActivity()
         }
+
+        viewModel.time.flowWithLifecycle(lifecycle).onEach {
+            binding.tvStopwatchNum.text = it
+        }.launchIn(lifecycleScope)
     }
 
     private fun setUpTimer() {
@@ -45,7 +57,7 @@ class StretchingMainActivity : BaseActivity<ActivityStretchingMainBinding>({ inf
     private fun moveToExerciseMainActivity() {
         val intent = Intent(
             this,
-            org.sopt.app3.planfit.presentation.exercisemain.ExerciseMainActivity::class.java
+            ExerciseMainActivity::class.java
         )
         startActivity(intent)
     }

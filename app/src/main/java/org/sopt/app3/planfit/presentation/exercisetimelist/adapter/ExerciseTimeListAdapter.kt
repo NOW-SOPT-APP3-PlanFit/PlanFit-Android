@@ -9,7 +9,7 @@ import org.sopt.app3.planfit.domain.model.ExerciseTime
 import org.sopt.app3.planfit.presentation.exercisetimelist.viewholder.ExerciseTimeListViewHolder
 
 class ExerciseTimeListAdapter(
-    private val selectedTime: Int,
+    private val selectedTime: String,
     private val onClick: (Int) -> Unit,
 ) : ListAdapter<ExerciseTime, ExerciseTimeListViewHolder>(DiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseTimeListViewHolder {
@@ -27,10 +27,6 @@ class ExerciseTimeListAdapter(
 
     override fun onBindViewHolder(holder: ExerciseTimeListViewHolder, position: Int) {
         holder.onBind(getItem(position))
-    }
-
-    fun getList(): List<ExerciseTime> {
-        return currentList.toList()
     }
 
     companion object {

@@ -9,6 +9,7 @@ import org.sopt.app3.planfit.BuildConfig
 import org.sopt.app3.planfit.data.api.ExerciseListService
 import org.sopt.app3.planfit.data.api.ExerciseMainService
 import org.sopt.app3.planfit.data.api.LikeService
+import org.sopt.app3.planfit.data.api.MainService
 import org.sopt.app3.planfit.data.interceptor.AuthInterceptor
 import retrofit2.Retrofit
 

@@ -6,23 +6,20 @@ import org.sopt.app3.planfit.databinding.ItemExerciseConditionListBinding
 import org.sopt.app3.planfit.domain.model.ExerciseCondition
 
 class ExerciseConditionListViewHolder (
-    private val selectedCondition: String,
+    private val selectedCondition: String?,
     private val binding: ItemExerciseConditionListBinding,
     private val onClick:(String) -> Unit
 ) : RecyclerView.ViewHolder(binding.root){
-    init {
-        binding.root.setOnClickListener {
-            onClick(selectedCondition)
-        }
-    }
     fun onBind(data: ExerciseCondition){
         binding.apply {
-            if(selectedCondition == data.condition){
+            if(selectedCondition == data.title){
                 vExerciseListEdge.isVisible =true
             }
             exerciseListConditionTitle.text = data.title
             exerciseListCondition.text = data.condition
-
+            root.setOnClickListener {
+                onClick(data.title)
+            }
         }
     }
 }

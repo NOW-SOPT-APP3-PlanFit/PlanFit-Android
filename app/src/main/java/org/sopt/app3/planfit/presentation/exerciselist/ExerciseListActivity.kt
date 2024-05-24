@@ -1,17 +1,19 @@
 package org.sopt.app3.planfit.presentation.exerciselist
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
+import org.sopt.app3.planfit.PlanFitApp
 import org.sopt.app3.planfit.R
 import org.sopt.app3.planfit.core.common.ViewModelFactory
 import org.sopt.app3.planfit.core.ui.base.BaseActivity
 import org.sopt.app3.planfit.databinding.ActivityExerciseListBinding
 import org.sopt.app3.planfit.databinding.ItemExerciseListStretchBinding
+import org.sopt.app3.planfit.presentation.StretchingMainActivity
+import org.sopt.app3.planfit.presentation.StretchingMainViewModel
 import org.sopt.app3.planfit.presentation.exerciselist.adapter.ExerciseListAdapter
 import org.sopt.app3.planfit.presentation.exerciselist.callback.ItemMoveCallback
 
@@ -21,9 +23,16 @@ class ExerciseListActivity :
     lateinit var adapter: ExerciseListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        PlanFitApp.stopWatch.stopStopWatch()
         initRecyclerViewAdapter()
         observeExercises()
         initViews()
+        binding.tvExerciseListStart.setOnClickListener {
+            val intent = Intent(this, StretchingMainActivity::class.java)
+            startActivity(intent)
+            PlanFitApp.stopWatch.initStopWatch()
+            PlanFitApp.stopWatch.startStopWatch()
+        }
     }
 
     private fun initRecyclerViewAdapter() {

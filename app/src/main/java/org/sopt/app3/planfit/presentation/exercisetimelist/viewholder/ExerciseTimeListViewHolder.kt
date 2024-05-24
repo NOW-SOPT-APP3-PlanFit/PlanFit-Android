@@ -8,20 +8,19 @@ import org.sopt.app3.planfit.domain.model.ExerciseTime
 class ExerciseTimeListViewHolder (
     private val binding:ItemExerciseTimeListBinding,
     private val onClick:(Int) -> Unit,
-    private val selectedTime: Int,
+    private val selectedTime: String,
 ) : RecyclerView.ViewHolder(binding.root){
-    init {
-        binding.root.setOnClickListener {
-            onClick
-        }
-    }
     fun onBind(data: ExerciseTime){
         binding.apply {
-            if(selectedTime.toString() == data.time){
+            if(data.time.contains(selectedTime)){
                 vExerciseListEdge.isVisible = true
             }
             exerciseListTimeTitle.text = data.title
             exerciseListTime.text = data.time
+            val num = data.time.filter { it.isDigit() }
+            root.setOnClickListener {
+                onClick(num.toInt())
+            }
         }
     }
 }

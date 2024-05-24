@@ -12,7 +12,7 @@ import org.sopt.app3.planfit.presentation.exerciseconditionlist.viewholder.Exerc
 import org.sopt.app3.planfit.presentation.exercisetimelist.viewholder.ExerciseTimeListViewHolder
 
 class ExerciseConditionListAdapter(
-    private var selectedCondition: String,
+    private var selectedCondition: String?,
     private val onClick: (String) -> Unit,
 ) : ListAdapter<ExerciseCondition, ExerciseConditionListViewHolder>(DiffUtil) {
 
