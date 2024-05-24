@@ -12,9 +12,10 @@ import org.sopt.app3.planfit.presentation.exerciseconditionlist.viewholder.Exerc
 import org.sopt.app3.planfit.presentation.exercisetimelist.viewholder.ExerciseTimeListViewHolder
 
 class ExerciseConditionListAdapter(
-    private val selectedCondition: String,
+    private var selectedCondition: String,
     private val onClick: (String) -> Unit,
 ) : ListAdapter<ExerciseCondition, ExerciseConditionListViewHolder>(DiffUtil) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseConditionListViewHolder {
         return ExerciseConditionListViewHolder(
             binding = ItemExerciseConditionListBinding.inflate(
@@ -26,6 +27,7 @@ class ExerciseConditionListAdapter(
             selectedCondition = selectedCondition
         )
     }
+
 
     override fun onBindViewHolder(holder: ExerciseConditionListViewHolder, position: Int) {
         holder.onBind(getItem(position))
