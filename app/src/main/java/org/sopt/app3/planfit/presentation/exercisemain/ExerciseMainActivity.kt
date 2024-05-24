@@ -1,12 +1,14 @@
 package org.sopt.app3.planfit.presentation.exercisemain
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
 import coil.load
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.app3.planfit.R
 import org.sopt.app3.planfit.core.common.ViewModelFactory
 import org.sopt.app3.planfit.core.ui.base.BaseActivity
@@ -37,6 +39,10 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
         binding.rvExerciseMainSet.itemAnimator = null // 화면 깜빡임 방지
         binding.tvExerciseMainComplete.text = getString(R.string.exercise_main_complete)
 
+        mainViewModel.time.flowWithLifecycle(lifecycle).onEach {
+            binding.tvStopwatchNum.text = it
+        }.launchIn(lifecycleScope)
+
         addSet()
         completeSet()
     }
@@ -54,7 +60,7 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
         binding.tvExerciseMainComplete.setOnClickListener {
             mainViewModel.completeExerciseSet(startIndex++.toLong())
 
-            if(startIndex == lastIndex-1)
+            if (startIndex == lastIndex - 1)
                 binding.tvExerciseMainComplete.isEnabled = false
         }
 
@@ -86,7 +92,7 @@ class ExerciseMainActivity : BaseActivity<ActivityExerciseMainBinding>({ inflate
             setOnClickListener {
                 isSelected = !isSelected
 
-                if(isSelected)
+                if (isSelected)
                     likeViewModel.changeToLike(1)
                 else
                     likeViewModel.changeToUnlike(1)

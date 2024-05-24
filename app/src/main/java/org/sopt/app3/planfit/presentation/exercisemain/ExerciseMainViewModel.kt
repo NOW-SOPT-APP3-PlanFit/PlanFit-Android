@@ -8,8 +8,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.sopt.app3.planfit.domain.model.SetCount
 import org.sopt.app3.planfit.domain.repo.ExerciseMainRepository
+import org.sopt.app3.planfit.domain.repo.StopWatchRepo
 
-class ExerciseMainViewModel(private val exerciseMainRepository: ExerciseMainRepository) :
+class ExerciseMainViewModel(
+    private val exerciseMainRepository: ExerciseMainRepository,
+    private val stopWatch: StopWatchRepo,
+) :
     ViewModel() {
     private val _setList = MutableLiveData(
         mutableListOf(
@@ -24,7 +28,7 @@ class ExerciseMainViewModel(private val exerciseMainRepository: ExerciseMainRepo
     private val _currentIndex = MutableLiveData<Long>(1)
     val currentIndex: LiveData<Long> = _currentIndex
 
-
+    val time = stopWatch.currentTime
     fun addExerciseSet(id: Long) {
         viewModelScope.launch {
             exerciseMainRepository.addExerciseSet(1) // 운동 고유 아이디
