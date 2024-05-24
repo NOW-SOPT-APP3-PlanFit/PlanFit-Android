@@ -24,6 +24,7 @@ class ExerciseTimeListAdapter(
         )
     }
 
+
     override fun onBindViewHolder(holder: ExerciseTimeListViewHolder, position: Int) {
         holder.onBind(getItem(position))
     }
