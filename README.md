@@ -25,7 +25,7 @@ https://github.com/NOW-SOPT-APP3-PlanFit/PlanFit-Android/assets/113014331/15c8f3
 
 ## 🗂️ 폴더링
 ```
-📂 org.sopt.sopkathon.android3
+📂 org.sopt.planfit
 ┣ 📂 data
 ┃ ┣ 📂 interceptor
 ┃ ┣ 📂 model
